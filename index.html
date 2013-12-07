@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/xml-json.js"></script>
+
+<title>Pintrest RSS feed to JSON by Jason Linnen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+<script>
+function myFunction()
+{
+document.getElementById("userdisplay").innerHTML = "Latest posts on Pintrest from " + query.value;
+getFeed("https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.pinterest.com/" + query.value + "/feed.rss&num=5");
+document.getElementById("full_link").innerHTML = "<a href='https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.pinterest.com/" + query.value + "/feed.rss&num=5' target=_blank> Click here to view the full JSON formatted output</a>"
+}
+</script>
+
+<div id="wrapper"> <h1>Search Pintrest by Username:</h1>
+<h1>
+<input type="text" onFocus="javaScipt:this.value=''" onBlur="if (this.value=='') this.value = 'Pintrest User Name'" value="Pintrest User Name" class="searchBox" id="query" name="searchBox"
+                onkeypress="javascript:if (event.keyCode == 13) myFunction();" />
+      <input id="submit" type="button" value="Search" onClick="myFunction()"/></h1> 
+<h1 id="userdisplay" font color="ffff"></h1>
+<div id="post_results"></div><br>
+<h3 id="full_link" font color="ffff"></h3>
+</div>
+</body>
+</html>
